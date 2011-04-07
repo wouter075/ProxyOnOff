@@ -30,14 +30,14 @@ Public Class Form1
         Next
 
         If bolWifi = True And bolWire = True Then
-            lblProfiel.Text = "Profiel: Bekabeld - Proxy Uit"
+            lblProfiel.Text = "Profiel (automatisch): Bekabeld - Proxy Uit"
 
             regKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings", True)
             regKey.SetValue("ProxyEnable", 0)
             regKey.SetValue("ProxyServer", "10.100.40.1:8080")
 
         Else
-            lblProfiel.Text = "Profiel: Draadloos - Proxy Aan"
+            lblProfiel.Text = "Profiel (automatisch): Draadloos - Proxy Aan"
 
             regKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings", True)
             regKey.SetValue("ProxyEnable", 1)
@@ -59,6 +59,40 @@ Public Class Form1
         Next
 
         lblHostName.Text = strHostname
+
+    End Sub
+
+    Private Sub btnToggle_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnToggle.Click
+        Dim regKey As Microsoft.Win32.RegistryKey
+
+        Select Case btnToggle.Text
+            Case "Proxy: Detecteren"
+                tmrCheck.Enabled = True
+                btnToggle.Text = "Proxy: Inschakelen"
+
+                lblProfiel.Text = "Profiel (automatisch): ..."
+
+            Case "Proxy: Inschakelen"
+                tmrCheck.Enabled = False
+                btnToggle.Text = "Proxy: Uitschakelen"
+
+                lblProfiel.Text = "Profiel (handmatig): Proxy Aan"
+
+                regKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings", True)
+                regKey.SetValue("ProxyEnable", 1)
+                regKey.SetValue("ProxyServer", "10.100.40.1:8080")
+
+            Case "Proxy: Uitschakelen"
+                tmrCheck.Enabled = False
+                btnToggle.Text = "Proxy: Detecteren"
+
+                lblProfiel.Text = "Profiel (handmatig): Proxy Uit"
+
+                regKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings", True)
+                regKey.SetValue("ProxyEnable", 0)
+                regKey.SetValue("ProxyServer", "10.100.40.1:8080")
+
+        End Select
 
     End Sub
 End Class

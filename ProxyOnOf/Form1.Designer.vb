@@ -25,8 +25,9 @@ Partial Class Form1
         Me.components = New System.ComponentModel.Container()
         Me.lblHostName = New System.Windows.Forms.Label()
         Me.lbIP = New System.Windows.Forms.ListBox()
-        Me.lblProfiel = New System.Windows.Forms.Label()
         Me.tmrCheck = New System.Windows.Forms.Timer(Me.components)
+        Me.btnToggle = New System.Windows.Forms.Button()
+        Me.lblProfiel = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'lblHostName
@@ -42,32 +43,46 @@ Partial Class Form1
         Me.lbIP.FormattingEnabled = True
         Me.lbIP.Location = New System.Drawing.Point(23, 25)
         Me.lbIP.Name = "lbIP"
-        Me.lbIP.Size = New System.Drawing.Size(225, 186)
+        Me.lbIP.Size = New System.Drawing.Size(225, 82)
         Me.lbIP.TabIndex = 2
-        '
-        'lblProfiel
-        '
-        Me.lblProfiel.AutoSize = True
-        Me.lblProfiel.Location = New System.Drawing.Point(20, 230)
-        Me.lblProfiel.Name = "lblProfiel"
-        Me.lblProfiel.Size = New System.Drawing.Size(42, 13)
-        Me.lblProfiel.TabIndex = 3
-        Me.lblProfiel.Text = "Profiel: "
         '
         'tmrCheck
         '
         Me.tmrCheck.Enabled = True
         Me.tmrCheck.Interval = 1000
         '
+        'btnToggle
+        '
+        Me.btnToggle.Location = New System.Drawing.Point(24, 148)
+        Me.btnToggle.Name = "btnToggle"
+        Me.btnToggle.Size = New System.Drawing.Size(224, 32)
+        Me.btnToggle.TabIndex = 3
+        Me.btnToggle.Text = "Proxy: Inschakelen"
+        Me.btnToggle.UseVisualStyleBackColor = True
+        '
+        'lblProfiel
+        '
+        Me.lblProfiel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblProfiel.Location = New System.Drawing.Point(24, 110)
+        Me.lblProfiel.Name = "lblProfiel"
+        Me.lblProfiel.Size = New System.Drawing.Size(224, 22)
+        Me.lblProfiel.TabIndex = 4
+        Me.lblProfiel.Text = "Profiel: ..."
+        Me.lblProfiel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(284, 258)
+        Me.ClientSize = New System.Drawing.Size(272, 197)
         Me.Controls.Add(Me.lblProfiel)
+        Me.Controls.Add(Me.btnToggle)
         Me.Controls.Add(Me.lbIP)
         Me.Controls.Add(Me.lblHostName)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.MaximizeBox = False
         Me.Name = "Form1"
+        Me.ShowIcon = False
         Me.Text = "ProxyOnOff"
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -75,7 +90,8 @@ Partial Class Form1
     End Sub
     Friend WithEvents lblHostName As System.Windows.Forms.Label
     Friend WithEvents lbIP As System.Windows.Forms.ListBox
-    Friend WithEvents lblProfiel As System.Windows.Forms.Label
     Friend WithEvents tmrCheck As System.Windows.Forms.Timer
+    Friend WithEvents btnToggle As System.Windows.Forms.Button
+    Friend WithEvents lblProfiel As System.Windows.Forms.Label
 
 End Class
